@@ -1,0 +1,7 @@
+TCP ACK segments can be used to gather information about firewall or ACL configuration. The purpose of this type of scan is to discover information about filter configurations rather than port state. This type of scanning is rarely useful alone, but when combined with SYN scanning, gives a more complete picture of the type of firewall rules that are present. When a TCP ACK segment is sent to a closed port, or sent out-of-sync to a listening port, the RFC 793 expected behavior is for the device to respond with a RST. Getting RSTs back in response to a ACK scan gives the attacker useful information that can be used to infer the type of firewall present. Stateful firewalls will discard out-of-sync ACK packets, leading to no response. When this occurs the port is marked as filtered. When RSTs are received in response, the ports are marked as unfiltered, as the ACK packets solicited the expected behavior from a port.
+
+Execution steps:
+1) run the "make" command to compile
+2) sudo ./ackscan IP_Address Port_No eg. sudo ./ackscan 192.168.2.10 80
+
+
